@@ -1,1 +1,1 @@
-#ticket mansgement system
+#ticket management system
