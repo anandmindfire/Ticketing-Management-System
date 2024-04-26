@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import morgan from "morgan";
 import { connectDB } from "./app/config/db.config.js"; 
 import ticketRoutes from "./app/routes/ticket.routes.js";
 import authRoutes from "./app/routes/auth.routes.js"
@@ -17,6 +18,8 @@ app.use(express.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
+
+app.use(morgan("dev")); // HTTP request logger middleware
 
 connectDB(); // Connect to MongoDB
 

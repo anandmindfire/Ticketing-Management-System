@@ -1,1 +1,47 @@
-<p>ticket-list works!</p>
+<div class="container mt-4">
+    <div class="row">
+      <div class="col">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchValue" (input)="onSearch()">
+          <button class="btn" style="border: 2px solid grey;" type="button" (click)="onSearch()">
+            🔍
+          </button>
+        </div>
+        <button class="btn btn-success btn-sm ml-2">
+            Add Ticket
+          </button>
+      </div>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th (click)="onSortChange('title')">Title</th>
+          <th (click)="onSortChange('description')">Description</th>
+          <th (click)="onSortChange('priority')">Priority</th>
+          <th (click)="onSortChange('dueDate')">Due Date</th>
+          <th (click)="onSortChange('status')">Status</th>
+          <th>Creator</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ticket of filteredTickets">
+          <td>{{ ticket.title }}</td>
+          <td>{{ ticket.description }}</td>
+          <td>{{ ticket.priority }}</td>
+          <td>{{ ticket.dueDate | date }}</td>
+          <td>{{ ticket.status }}</td>
+          <td>{{ ticket.createdBy }}</td>
+          <td>
+            <button class="btn btn-sm">
+                ✏️
+            </button>
+            <button class="btn btn-sm ml-2">
+                🗑️
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const { Schema, model } = mongoose;
 
-const ticketSchema = new Schema({
+const tikuSchema = new Schema({
   title: {
     type: String,
     required: true
@@ -26,11 +26,12 @@ const ticketSchema = new Schema({
     default: 'open'
   },
   createdBy: {
-    type: String,
+    type: String, // Change type to ObjectId
+   
     required: true
   }
 }, { timestamps: true });
 
-const Ticket = model('Ticket', ticketSchema);
+const Tiku = model('Tiku', tikuSchema);
 
-export default Ticket;
+export default Tiku;

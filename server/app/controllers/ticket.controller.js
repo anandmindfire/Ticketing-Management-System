@@ -8,31 +8,30 @@ export const getAllTickets = async (req, res) => {
     const tickets = await Ticket.find();
     res.status(200).json(tickets);
   } catch (error) {
-    res.status(500).json({ message: 'Failed to get tickets', error: error.message });
+    res.status(500).json({ message: 'Failed to get tickets', error});
   }
 };
 
 // Create a new ticket
 export const createTicket = async (req, res) => {
-    const { title, description, priority, dueDate, status } = req.body;
-    const createdBy = req.user._id; // Assuming the logged-in user's ID is in req.user
-  
-    try {
-      const newTicket = new Ticket({
-        title,
-        description,
-        priority,
-        dueDate,
-        status,
-        createdBy // Set the createdBy field to the user's ID
-      });
-  
-      await newTicket.save();
-      res.status(201).json({ message: 'Ticket created successfully', ticket: newTicket });
-    } catch (error) {
-      res.status(500).json({ message: 'Failed to create ticket', error: error.message });
-    }
-  };
+  const { title, description, priority, dueDate, status, createdBy } = req.body;
+
+  try {
+    const newTicket = new Ticket({
+      title,
+      description,
+      priority,
+      dueDate,
+      status,
+      createdBy
+    });
+
+    await newTicket.save();
+    res.status(201).json({ message: 'Ticket created successfully', ticket: newTicket });
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to create ticket', error: error.message });
+  }
+};
   
 // Get ticket by ID
 export const getTicketById = async (req, res) => {
