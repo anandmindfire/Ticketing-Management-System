@@ -26,7 +26,7 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/login`, credentials).pipe(
       map((response: any) => {
         if (response.success) {
-          localStorage.setItem('user', JSON.stringify(response.user)); // Store user details in local storage
+          console.log("login success")
         }
         return response;
       }),
@@ -39,17 +39,17 @@ export class AuthService {
 
   // Logout user
   logout(): void {
-    localStorage.removeItem('user'); // Remove user details from local storage
+    localStorage.removeItem('currentUser'); // Remove user details from local storage
   }
 
   // Check if user is logged in (check local storage)
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('user');
+    return !!localStorage.getItem('currentUser');
   }
 
   // Get user details from local storage
   getUser(): any {
-    const user = localStorage.getItem('user');
+    const user = localStorage.getItem('currentUser');
     return user ? JSON.parse(user) : null;
   }
 }
