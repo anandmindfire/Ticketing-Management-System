@@ -7,11 +7,12 @@
             🔍
           </button>
         </div>
-        <button class="btn btn-success btn-sm ml-2">
+        <button class="btn btn-success btn-sm ml-2" (click)="toggleCreateTicket()">
             Add Ticket
-          </button>
+        </button>
       </div>
     </div>
+    <app-ticket-create *ngIf="showCreateTicket"></app-ticket-create>
     <table class="table">
       <thead>
         <tr>

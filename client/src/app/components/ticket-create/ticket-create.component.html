@@ -1,3 +1,4 @@
+
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-lg-6">
@@ -26,8 +27,8 @@
               </select>
             </div>
             <div class="mb-3">
-                <label for="title" class="form-label">Due Date</label>
-                <input type="text" formControlName="title" class="form-control" />
+                <label for="dueDate" class="form-label">Due Date</label>
+                <input type="date" formControlName="dueDate" class="form-control" />
               </div>
             <div *ngIf="errorMessage" class="alert alert-danger mb-3">
               {{ errorMessage }}

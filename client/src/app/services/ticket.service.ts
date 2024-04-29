@@ -22,9 +22,9 @@ export class TicketService {
   }
 
   // Create a new ticket
-  createTicket(ticketData: any, createdBy: any): Observable<any> {
+  createTicket(ticketData: any): Observable<any> {
     // Add the createdBy field to the ticketData object
-    const ticketPayload = { ...ticketData, createdBy };
+    const ticketPayload = { ...ticketData };
 
     return this.http.post<any>(this.apiUrl, ticketPayload).pipe(
       catchError(error => {

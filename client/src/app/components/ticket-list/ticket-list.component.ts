@@ -19,6 +19,12 @@ export class TicketListComponent implements OnInit {
  ngOnInit(): void {
     this.loadTickets();
  }
+  // Method to open modal
+  showCreateTicket = false;
+
+    toggleCreateTicket(): void {
+        this.showCreateTicket = !this.showCreateTicket;
+    }
 
  loadTickets(): void {
     this.ticketService.getAllTickets().subscribe(tickets => {
