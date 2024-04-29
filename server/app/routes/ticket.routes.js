@@ -11,10 +11,10 @@ import {
 const router = express.Router();
 
 // Routes for ticket CRUD operations
-router.get('/', getAllTickets);
+router.get('/get', getAllTickets);
 router.post('/', createTicket);
 router.get('/:id', getTicketById);
 router.patch('/:id', updateTicketById);
 router.delete('/:id', deleteTicketById);
 
-export default router;
+export default router; // Export router to be used in server.js

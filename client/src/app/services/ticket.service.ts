@@ -13,7 +13,7 @@ export class TicketService {
 
   // Fetch all tickets
   getAllTickets(): Observable<any[]> {
-    return this.http.get<any[]>(`http://localhost:8000/api/v1/ticket`).pipe(
+    return this.http.get<any[]>(`http://localhost:8080/api/ticket/get`).pipe(
       catchError(error => {
         console.error('Failed to fetch tickets:', error);
         return throwError('Failed to fetch tickets');
