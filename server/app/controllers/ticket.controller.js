@@ -14,7 +14,7 @@ export const getAllTickets = async (req, res) => {
 
 // Create a new ticket
 export const createTicket = async (req, res) => {
-  const { title, description, priority, dueDate, status, createdBy } = req.body;
+  const { title, description, priority, dueDate, createdBy } = req.body;
 
   try {
     const newTicket = new Ticket({
@@ -22,14 +22,13 @@ export const createTicket = async (req, res) => {
       description,
       priority,
       dueDate,
-      status,
       createdBy
     });
 
     await newTicket.save();
     res.status(201).json({ message: 'Ticket created successfully', ticket: newTicket });
   } catch (error) {
-    res.status(500).json({ message: 'Failed to create ticket', error: error.message });
+    res.status(500).json({ message: 'Failed to create ticket', error: error });
   }
 };
   

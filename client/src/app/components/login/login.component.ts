@@ -28,7 +28,8 @@ export class LoginComponent {
     this.authService.login({ email, password }).subscribe(
       (response) => {
         console.log('Login successful:', response);
-        // Redirect to the homepage upon successful login
+         // Store user details in local storage
+         localStorage.setItem('currentUser', JSON.stringify(response.user));
         this.router.navigate(['/home']); // Navigate to '/home'
       },
       (error) => {

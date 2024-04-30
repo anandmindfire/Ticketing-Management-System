@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,15 +10,17 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent {
   username: string = ''; // Initialize username
+  currentUser: any;
 
-  constructor(private authService: AuthService,private router: Router) {
-    // Get user details from local storage upon component initialization
-    const user = this.authService.getUser();
-    if (user) {
-      this.username = user.name; // Set username if user is logged in
-    }
+  constructor(private authService: AuthService,private router: Router,private userService: UserService) { }
+
+  ngOnInit(): void {
+    this.getCurrentUser();
   }
 
+  getCurrentUser(): void {
+    this.currentUser = this.userService.getCurrentUser();
+  }
   // Logout user
   logout(): void {
     this.authService.logout();

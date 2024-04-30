@@ -19,6 +19,12 @@ export class TicketListComponent implements OnInit {
  ngOnInit(): void {
     this.loadTickets();
  }
+  // Method to open modal
+  showCreateTicket = false;
+
+    toggleCreateTicket(): void {
+        this.showCreateTicket = !this.showCreateTicket;
+    }
 
  loadTickets(): void {
     this.ticketService.getAllTickets().subscribe(tickets => {
@@ -51,4 +57,20 @@ export class TicketListComponent implements OnInit {
       return 0;
     })];
  }
+
+ //delete
+ deleteTicket(ticketId: string): void {
+  this.ticketService.deleteTicketById(ticketId).subscribe(
+    () => {
+      // Remove the deleted ticket from the array
+      this.tickets = this.tickets.filter(ticket => String(ticket.id) !== ticketId);
+      this.filteredTickets = this.filteredTickets.filter(ticket => String(ticket.id) !== ticketId);
+    },
+    (error) => {
+      console.error('Failed to delete ticket:', error);
+      // Optionally, display an error message
+    }
+  );
 }
+}
+
