@@ -37,7 +37,7 @@
             <button class="btn btn-sm">
                 ✏️
             </button>
-            <button class="btn btn-sm ml-2">
+            <button class="btn btn-sm" (click)="ticket.id && deleteTicket(ticket.id.toString())">
                 🗑️
             </button>
           </td>
